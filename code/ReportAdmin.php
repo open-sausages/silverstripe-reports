@@ -10,6 +10,8 @@
  * 
  * @package reports
  */
+
+use SilverStripe\ORM\ArrayList;
 class ReportAdmin extends LeftAndMain implements PermissionProvider
 {
     

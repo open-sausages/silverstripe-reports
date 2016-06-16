@@ -4,6 +4,8 @@
  * @package reports
  * @subpackage tests
  */
+
+use SilverStripe\ORM\ArrayList;
 class ReportTest extends SapphireTest
 {
 

@@ -29,6 +29,9 @@
  * 
  * @package reports
  */
+
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\SS_List;
 class SS_Report extends ViewableData
 {
 	/**
