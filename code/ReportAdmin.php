@@ -12,7 +12,7 @@ use SilverStripe\Forms\GridField\GridFieldDataColumns;
 use SilverStripe\Forms\GridField\GridFieldFooter;
 use SilverStripe\Forms\GridField\GridFieldSortableHeader;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorConfig;
-use SilverStripe\ORM\ArrayListInterface;
+use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\ListInterface;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\PermissionProvider;
@@ -104,7 +104,7 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider
      */
     public function Reports()
     {
-        $output = new ArrayListInterface();
+        $output = new ArrayList();
         /** @var Report $report */
         foreach (Report::get_reports() as $report) {
             if ($report->canView()) {
@@ -162,7 +162,7 @@ class ReportAdmin extends LeftAndMain implements PermissionProvider
      * Returns the Breadcrumbs for the ReportAdmin
      *
      * @param bool $unlinked
-     * @return ArrayListInterface
+     * @return ArrayList
      */
     public function Breadcrumbs($unlinked = false)
     {

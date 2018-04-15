@@ -3,7 +3,7 @@
 namespace SilverStripe\Reports\Tests\ReportTest;
 
 use SilverStripe\Dev\TestOnly;
-use SilverStripe\ORM\ArrayListInterface;
+use SilverStripe\ORM\ArrayList;
 use SilverStripe\Reports\Report;
 
 abstract class FakeTestAbstract extends Report implements TestOnly
@@ -25,7 +25,7 @@ abstract class FakeTestAbstract extends Report implements TestOnly
 
     public function sourceRecords($params, $sort, $limit)
     {
-        return new ArrayListInterface();
+        return new ArrayList();
     }
 
     public function sort()

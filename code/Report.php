@@ -21,7 +21,7 @@ use SilverStripe\Forms\GridField\GridFieldPaginator;
 use SilverStripe\Forms\GridField\GridFieldPrintButton;
 use SilverStripe\Forms\GridField\GridFieldSortableHeader;
 use SilverStripe\Forms\LiteralField;
-use SilverStripe\ORM\ArrayListInterface;
+use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataQuery;
@@ -165,7 +165,7 @@ class Report extends ViewableData
             return $this->sourceRecords($params, null, null);
         } else {
             $query = $this->sourceQuery();
-            $results = new ArrayListInterface();
+            $results = new ArrayList();
             foreach ($query->execute() as $data) {
                 $class = $this->dataClass();
                 $result = new $class($data);
