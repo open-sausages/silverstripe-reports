@@ -21,11 +21,11 @@ use SilverStripe\Forms\GridField\GridFieldPaginator;
 use SilverStripe\Forms\GridField\GridFieldPrintButton;
 use SilverStripe\Forms\GridField\GridFieldSortableHeader;
 use SilverStripe\Forms\LiteralField;
-use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\ArrayListInterface;
 use SilverStripe\ORM\CMSPreviewable;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataQuery;
-use SilverStripe\ORM\SS_List;
+use SilverStripe\ORM\ListInterface;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
 use SilverStripe\Security\Security;
@@ -59,7 +59,7 @@ use SilverStripe\View\ViewableData;
  * Right now, all subclasses of SS_Report will be shown in the ReportAdmin. In SS3 there is only
  * one place where reports can go, so this class is greatly simplifed from its version in SS2.
  *
- * @method SS_List|DataList sourceRecords($params = [], $sort = null, $limit = null) List of records to show for this report
+ * @method ListInterface|DataList sourceRecords($params = [], $sort = null, $limit = null) List of records to show for this report
  */
 class Report extends ViewableData
 {
@@ -157,7 +157,7 @@ class Report extends ViewableData
      * Return a SS_List records for this report.
      *
      * @param array $params
-     * @return SS_List
+     * @return ListInterface
      */
     public function records($params)
     {
@@ -165,7 +165,7 @@ class Report extends ViewableData
             return $this->sourceRecords($params, null, null);
         } else {
             $query = $this->sourceQuery();
-            $results = new ArrayList();
+            $results = new ArrayListInterface();
             foreach ($query->execute() as $data) {
                 $class = $this->dataClass();
                 $result = new $class($data);
@@ -218,7 +218,7 @@ class Report extends ViewableData
     public function getCount($params = array())
     {
         $sourceRecords = $this->sourceRecords($params, null, null);
-        if (!$sourceRecords instanceof SS_List) {
+        if (!$sourceRecords instanceof ListInterface) {
             user_error(static::class . "::sourceRecords does not return an SS_List", E_USER_NOTICE);
             return "-1";
         }
